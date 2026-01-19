@@ -873,10 +873,10 @@ body {
     background: #f8f9ff;
     cursor: pointer;
     transition: all 0.3s;
-    overflow: visible !important;  /* X 버튼이 보이도록 */
+    overflow: hidden;
 }
 
-.photo-item > *:not(.photo-delete) {
+.photo-item > * {
     position: absolute;
     top: 0;
     left: 0;
@@ -894,107 +894,15 @@ body {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    border-radius: 10px !important;
 }
 
 .photo-item.has-image {
     border-style: solid;
     border-color: #667eea;
     padding: 0;
-    overflow: hidden !important;  /* 이미지는 잘리도록 */
 }
 
 .photo-item .add-icon {
     font-size: 2rem;
     color: #667eea;
-}
-
-/* Photo Delete Button */
-.photo-delete {
-    position: absolute !important;
-    top: -8px !important;  /* 사진 밖으로 살짝 나오게 */
-    right: -8px !important;
-    width: 28px !important;
-    height: 28px !important;
-    border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.98) !important;
-    color: #e74c3c !important;
-    border: 2px solid #f0f0f0 !important;
-    font-size: 20px !important;
-    font-weight: bold !important;
-    line-height: 1 !important;
-    cursor: pointer !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
-    z-index: 100 !important;
-    transition: all 0.2s !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-}
-
-.photo-delete:hover {
-    background: #e74c3c !important;
-    color: white !important;
-    border-color: #e74c3c !important;
-    transform: scale(1.15) !important;
-    box-shadow: 0 3px 12px rgba(231, 76, 60, 0.4) !important;
-}
-
-.photo-delete:active {
-    transform: scale(1.05) !important;
-}
-
-/* Confirm Dialog */
-.confirm-content {
-    max-width: 400px !important;
-    padding: 0 !important;
-}
-
-.confirm-dialog {
-    padding: 30px;
-    text-align: center;
-}
-
-.confirm-dialog p {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 25px;
-    line-height: 1.6;
-}
-
-.confirm-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-confirm-yes,
-.btn-confirm-no {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.btn-confirm-yes {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.btn-confirm-yes:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-}
-
-.btn-confirm-no {
-    background: #f0f0f0;
-    color: #666;
-}
-
-.btn-confirm-no:hover {
-    background: #e0e0e0;
 }

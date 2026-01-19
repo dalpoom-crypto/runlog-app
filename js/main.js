@@ -14,17 +14,16 @@ const PageManager = {
         console.log('🚀 앱 초기화 시작');
         
         // 인증 상태 확인
-        setTimeout(() => {
-            firebase.auth().onAuthStateChanged((user) => {
-                if (user) {
-                    console.log('✅ 로그인된 사용자:', user.email);
-                    this.setupApp();
-                } else {
-                    console.log('❌ 로그인 필요');
-                    window.location.href = 'login.html';
-                }
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                console.log('✅ 로그인된 사용자:', user.email);
+                this.setupApp();
+            } else {
+                console.log('❌ 로그인 필요');
+                window.location.href = 'login.html';
+            }
         });
-    }, 500);
+    },
     
     /**
      * 앱 설정

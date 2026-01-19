@@ -2542,27 +2542,3 @@ body {
     outline: none;
     border-color: #a5b4fc;
 }
-
-
-/* Empty State Message */
-.empty-message {
-    text-align: center;
-    padding: 60px 20px;
-    color: #999;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.community-feed-inner .empty-message {
-    padding: 100px 20px;
-}
-
-#recommendedRunners .empty-message {
-    padding: 40px 20px;
-}
-
-#bestLikesList .empty-message,
-#bestCommentsList .empty-message {
-    padding: 40px 20px;
-    font-size: 0.9rem;
-}
