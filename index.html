@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RunLog v2.0</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Home Page -->
+        <div class="page-content active" id="homePage">
+            <header class="app-header">
+                <h1 class="app-title">RunLog</h1>
+                <button class="icon-btn" id="logoutBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </button>
+            </header>
+
+            <section class="home-section">
+                <h2 class="section-title">🔥 커뮤니티 베스트</h2>
+                <div class="best-compact-list" id="bestPosts"></div>
+            </section>
+        </div>
+
+        <!-- Search Page -->
+        <div class="page-content" id="searchPage">
+            <header class="app-header">
+                <h1 class="app-title">검색</h1>
+            </header>
+
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="러너, 크루 검색...">
+            </div>
+
+            <section class="search-section">
+                <h2 class="section-title">👥 추천 러너</h2>
+                <div class="recommended-list" id="recommendedRunners"></div>
+            </section>
+        </div>
+
+        <!-- Runlog Page -->
+        <div class="page-content" id="runlogPage">
+            <header class="app-header">
+                <h1 class="app-title">런로그</h1>
+            </header>
+
+            <!-- User Profile -->
+            <div class="runlog-profile">
+                <img src="https://i.pravatar.cc/70?img=1" class="profile-photo">
+                <div class="profile-info">
+                    <div class="profile-nickname">러너</div>
+                    <div class="profile-details">
+                        <span class="profile-region">서울</span>
+                        <span class="profile-crew">크루 없음</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Runlog List -->
+            <div class="runlog-list" id="runlogList">
+                <!-- 런로그 카드들이 여기 표시됩니다 -->
+            </div>
+        </div>
+
+        <!-- Community Page -->
+        <div class="page-content" id="communityPage">
+            <header class="app-header">
+                <h1 class="app-title">커뮤니티</h1>
+            </header>
+
+            <div class="community-feed" id="communityFeed">
+                <!-- 커뮤니티 피드가 여기 표시됩니다 -->
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav-v2">
+            <div class="nav-item-v2 active" data-page="home">
+                <svg class="nav-icon-v2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span class="nav-label-v2">홈</span>
+            </div>
+
+            <div class="nav-item-v2" data-page="search">
+                <svg class="nav-icon-v2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="nav-label-v2">검색</span>
+            </div>
+
+            <div class="nav-item-v2 nav-add-v2">
+                <svg class="nav-icon-add" width="56" height="56" viewBox="0 0 56 56">
+                    <circle cx="28" cy="28" r="28" fill="url(#gradient)"/>
+                    <line x1="28" y1="18" x2="28" y2="38" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="18" y1="28" x2="38" y2="28" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="nav-item-v2" data-page="runlog">
+                <svg class="nav-icon-v2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span class="nav-label-v2">런로그</span>
+            </div>
+
+            <div class="nav-item-v2" data-page="community">
+                <svg class="nav-icon-v2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span class="nav-label-v2">커뮤니티</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Add Menu Popup -->
+    <div id="addMenu" class="add-menu"></div>
+
+    <!-- Runlog Write Modal -->
+    <div id="writeModalRunlog" class="modal"></div>
+
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/imageCompressor.js"></script>
+    <script src="js/utils/eventManager.js"></script>
+    <script src="js/services/dataService.js"></script>
+    <script src="js/modules/home.js"></script>
+    <script src="js/modules/runlog.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

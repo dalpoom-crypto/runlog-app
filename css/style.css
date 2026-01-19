@@ -1,0 +1,2568 @@
+/* ==================== Base Styles ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #f0f0f0;
+    color: #262626;
+}
+
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* ==================== Header ==================== */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #dbdbdb;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.app-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #262626;
+    transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    background: #f0f0f0;
+    border-radius: 50%;
+}
+
+/* ==================== Bottom Navigation V2 ==================== */
+.bottom-nav-v2 {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-top: 1px solid #dbdbdb;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    z-index: 100;
+    max-width: 480px;
+    width: 100%;
+}
+
+.nav-item-v2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: #8e8e8e;
+    transition: all 0.2s;
+}
+
+.nav-item-v2.active {
+    color: #a5b4fc;
+}
+
+.nav-item-v2.nav-add-v2 {
+    color: #262626;
+}
+
+.nav-item-v2.nav-add-v2.active {
+    color: #a5b4fc;
+}
+
+.nav-icon-v2 {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-icon-add {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-label-v2 {
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.nav-profile-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ==================== Page Content ==================== */
+.page-content {
+    display: none;
+    min-height: calc(100vh - 60px);
+    padding-bottom: 60px;
+}
+
+.page-content.active {
+    display: block;
+}
+
+/* ==================== Home Page ==================== */
+.home-section {
+    padding: 20px;
+    border-bottom: 8px solid #f0f0f0;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #262626;
+}
+
+.subsection-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 12px 0 8px 0;
+    color: #666;
+}
+
+/* Best Compact List */
+.best-compact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.best-compact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.best-compact-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.best-compact-badge {
+    font-size: 1.2rem;
+    min-width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    border-radius: 6px;
+}
+
+.best-compact-badge.race {
+    background: #fef3c7;
+}
+
+.best-compact-badge.product {
+    background: #dbeafe;
+}
+
+.best-compact-badge.course {
+    background: #d1fae5;
+}
+
+.best-compact-content {
+    flex: 1;
+}
+
+.best-compact-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.best-compact-username {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.best-compact-title {
+    font-size: 0.85rem;
+    color: #262626;
+}
+
+.best-compact-stats {
+    display: flex;
+    gap: 12px;
+    font-size: 0.75rem;
+    color: #8e8e8e;
+}
+
+/* Activity Compact List */
+.activity-compact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.activity-compact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.activity-compact-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.activity-compact-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.activity-compact-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.activity-compact-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.activity-compact-text {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.activity-compact-time {
+    font-size: 0.75rem;
+    color: #8e8e8e;
+    white-space: nowrap;
+}
+
+/* ==================== Search Page ==================== */
+.search-container {
+    padding: 20px;
+}
+
+.search-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-tab {
+    flex: 1;
+    padding: 10px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.search-tab.active {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-btn {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.search-placeholder {
+    text-align: center;
+    color: #8e8e8e;
+    padding: 40px 20px;
+}
+
+/* ==================== RunLog Profile V2 ==================== */
+.profile-section-v2 {
+    padding: 20px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.profile-top-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.profile-left {
+    flex: 1;
+}
+
+.profile-photo-wrapper {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.profile-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #dbdbdb;
+}
+
+.profile-info-v2 {
+    margin-bottom: 0;
+}
+
+.profile-name-v2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.profile-location-v2,
+.profile-crew-v2 {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.profile-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-stats-v2 {
+    display: flex;
+    gap: 15px;
+}
+
+.stat-item-v2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.stat-number-v2 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.stat-label-v2 {
+    font-size: 0.7rem;
+    color: #8e8e8e;
+}
+
+.btn-profile-edit {
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-profile-edit:hover {
+    background: #f0f0f0;
+}
+
+.finisher-badge-v2 {
+    display: inline-block;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* ==================== RunLog Tabs ==================== */
+.runlog-tabs {
+    display: flex;
+    background: white;
+    border-bottom: 1px solid #dbdbdb;
+    position: sticky;
+    top: 61px;
+    z-index: 50;
+}
+
+.runlog-tab {
+    flex: 1;
+    padding: 15px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #8e8e8e;
+    transition: all 0.2s;
+}
+
+.runlog-tab.active {
+    color: #262626;
+    border-bottom-color: #a5b4fc;
+}
+
+.runlog-tab-content {
+    display: none;
+}
+
+.runlog-tab-content.active {
+    display: block;
+}
+
+/* ==================== PB Slider V2 (Vertical Scroll) ==================== */
+.pb-slider-section-v2 {
+    padding: 20px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.pb-slider-wrapper {
+    height: 120px;
+    overflow: hidden;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    position: relative;
+}
+
+.pb-slider-track {
+    transition: transform 1s ease-in-out;
+}
+
+.pb-slide-v2 {
+    height: 120px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pb-slide-distance {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.pb-slide-time {
+    font-family: 'Courier New', monospace;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.pb-slide-info {
+    font-size: 0.85rem;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+}
+
+/* ==================== Posts Grid ==================== */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    padding: 0;
+}
+
+.post-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-color: #f0f0f0;
+    color: white;
+}
+
+.post-item.competition {
+    border: 3px solid #a5b4fc;
+}
+
+.post-item:not([style*="background-image"]) {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%) !important;
+}
+
+.post-item[style*="background-image"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.post-item > * {
+    position: relative;
+    z-index: 2;
+}
+
+.post-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.post-icon-top {
+    font-size: 1.4rem;
+    align-self: flex-start;
+}
+
+.post-info-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.post-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+.post-time {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    opacity: 0.9;
+}
+
+/* ==================== Scrap List ==================== */
+.scrap-list {
+    padding: 15px;
+}
+
+.scrap-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.scrap-badge {
+    font-size: 1.2rem;
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    border-radius: 8px;
+}
+
+.scrap-badge.race {
+    background: #fef3c7;
+}
+
+.scrap-content {
+    flex: 1;
+}
+
+.scrap-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.scrap-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: #8e8e8e;
+}
+
+.scrap-author {
+    font-weight: 600;
+}
+
+/* ==================== Community Feed ==================== */
+.community-feed {
+    padding: 15px;
+}
+
+.feed-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.feed-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feed-item-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.feed-item-badge.race {
+    background: #fef3c7;
+}
+
+.feed-item-badge.product {
+    background: #dbeafe;
+}
+
+.feed-item-badge.course {
+    background: #d1fae5;
+}
+
+.feed-item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.feed-item-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.feed-item-user {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.feed-item-username {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.feed-item-time {
+    font-size: 0.75rem;
+    color: #8e8e8e;
+}
+
+.feed-item-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #262626;
+}
+
+.feed-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.85rem;
+    color: #8e8e8e;
+}
+
+.feed-item-buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.feed-action-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.feed-action-btn:hover {
+    transform: scale(1.2);
+}
+
+/* ==================== Modal ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: white;
+    margin: 20px;
+    max-width: calc(100% - 40px);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-compact {
+    max-width: 360px;
+    margin: 40px auto;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #8e8e8e;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* ==================== Write Options ==================== */
+.write-options {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.write-option-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border: 2px solid #dbdbdb;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.write-option-btn:hover {
+    border-color: #a5b4fc;
+    background: #f8f9ff;
+}
+
+.write-option-icon {
+    font-size: 1.8rem;
+}
+
+.write-option-text {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ==================== Category Buttons ==================== */
+.category-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 8px 16px;
+    background: #f0f0f0;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.category-btn.active {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border-color: #a5b4fc;
+}
+
+/* ==================== Privacy Buttons ==================== */
+.privacy-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.privacy-btn {
+    flex: 1;
+    min-width: calc(50% - 4px);
+    padding: 10px;
+    background: white;
+    border: 2px solid #dbdbdb;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.privacy-btn.active {
+    background: #f8f9ff;
+    border-color: #a5b4fc;
+    color: #a5b4fc;
+}
+
+/* ==================== Photo Upload Modern ==================== */
+.photo-upload-modern {
+    margin-top: 10px;
+}
+
+.photo-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.photo-add-btn {
+    aspect-ratio: 1;
+    border: 2px dashed #dbdbdb;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #f8f9fa;
+}
+
+.photo-add-btn:hover {
+    border-color: #a5b4fc;
+    background: #f8f9ff;
+}
+
+.photo-add-btn span {
+    font-size: 0.85rem;
+    color: #8e8e8e;
+    margin-top: 8px;
+}
+
+.photo-preview-item {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.photo-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* ==================== Profile Edit ==================== */
+.profile-photo-edit {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo-edit img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.btn-change-photo {
+    padding: 8px 20px;
+    background: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* ==================== Form ==================== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #262626;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(165, 180, 252, 0.4);
+}
+
+/* ==================== Empty State ==================== */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #8e8e8e;
+}
+
+.empty-state p {
+    margin: 10px 0;
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 480px) {
+    .bottom-nav-v2 {
+        max-width: 100%;
+        left: 0;
+        transform: none;
+    }
+    
+    .container {
+        box-shadow: none;
+    }
+    
+    .modal-content {
+        margin: 0;
+        max-width: 100%;
+        border-radius: 0;
+        min-height: 100vh;
+    }
+    
+    .modal-compact {
+        margin: 40px auto;
+        max-width: 360px;
+        border-radius: 15px;
+        min-height: auto;
+    }
+}
+
+/* Write Modal Divider */
+.write-divider {
+    height: 1px;
+    background: #e0e0e0;
+    margin: 8px 0;
+    position: relative;
+}
+
+.write-divider::after {
+    content: 'or';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 0 10px;
+    font-size: 0.8rem;
+    color: #8e8e8e;
+}
+
+/* Share Icon */
+.share-icon {
+    display: inline-block;
+    position: relative;
+}
+
+/* ==================== Profile V3 (3 columns) ==================== */
+.profile-section-v3 {
+    display: flex;
+    gap: 15px;
+    padding: 15px 20px;
+    border-bottom: 1px solid #dbdbdb;
+    align-items: center;
+}
+
+.profile-col-1 {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.profile-col-1 .profile-photo-wrapper {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+}
+
+.profile-col-1 .profile-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #dbdbdb;
+}
+
+.profile-col-2 {
+    flex: 1;
+    min-width: 0;
+    margin-left: 5px;
+}
+
+.profile-name-v3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.profile-location-v3,
+.profile-crew-v3 {
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.finisher-badge-v3 {
+    display: inline-block;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.profile-col-3 {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.profile-stats-v3 {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-item-v3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    min-width: 38px;
+}
+
+.stat-number-v3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #262626;
+}
+
+.stat-label-v3 {
+    font-size: 0.7rem;
+    color: #8e8e8e;
+    white-space: nowrap;
+}
+
+/* Scrap actions */
+.scrap-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.scrap-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #8e8e8e;
+    transition: all 0.2s;
+    padding: 4px;
+}
+
+.scrap-action-btn:hover {
+    color: #a5b4fc;
+}
+
+.scrap-action-btn.active {
+    color: #a5b4fc;
+}
+
+/* Pin button states */
+.pin-btn {
+    color: #8e8e8e;
+    transition: all 0.2s;
+}
+
+.pin-btn.pinned {
+    color: #a5b4fc;
+}
+
+.pin-icon {
+    display: block;
+}
+
+/* Record Type Switch */
+.record-type-switch {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.record-type-btn {
+    flex: 1;
+    padding: 14px;
+    background: #f5f5f5;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.record-type-btn.active {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border-color: #a5b4fc;
+}
+
+/* Time Input Group */
+.time-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.time-input-group input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.time-input-group span {
+    font-weight: 600;
+    color: #8e8e8e;
+    font-size: 1.1rem;
+}
+
+/* Form group spacing for record form */
+#runningRecordForm .form-group {
+    margin-bottom: 22px;
+}
+
+#runningRecordForm .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: #262626;
+    font-weight: 600;
+}
+
+#runningRecordForm input[type="text"],
+#runningRecordForm input[type="date"],
+#runningRecordForm input[type="number"],
+#runningRecordForm select,
+#runningRecordForm textarea {
+    font-size: 0.95rem;
+    padding: 12px 14px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+#runningRecordForm input:focus,
+#runningRecordForm select:focus,
+#runningRecordForm textarea:focus {
+    outline: none;
+    border-color: #a5b4fc;
+    box-shadow: 0 0 0 3px rgba(165, 180, 252, 0.1);
+}
+
+.header-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* ==================== Post Detail Modal ==================== */
+.post-detail-modal,
+.friend-runlog-modal {
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
+}
+
+.post-detail-modal .modal-header,
+.friend-runlog-modal .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    color: #262626;
+}
+
+.post-detail-body,
+.friend-runlog-body {
+    padding: 20px;
+}
+
+.post-detail-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.post-detail-badge.race {
+    background: #fef3c7;
+}
+
+.post-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.post-detail-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.post-detail-user {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.post-detail-username {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.post-detail-time {
+    font-size: 0.8rem;
+    color: #8e8e8e;
+}
+
+.post-detail-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.post-detail-photos {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post-detail-photo {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.post-detail-content {
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    color: #262626;
+}
+
+.post-detail-content p {
+    margin-bottom: 12px;
+}
+
+.post-detail-actions {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 15px;
+}
+
+.detail-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #262626;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.detail-action-btn:hover {
+    background: #f5f5f5;
+}
+
+.post-detail-stats {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: #8e8e8e;
+    margin-bottom: 25px;
+}
+
+.post-detail-comments {
+    margin-bottom: 20px;
+}
+
+.post-detail-comments h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.comment-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.comment-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.comment-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.comment-username {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.comment-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.comment-time {
+    font-size: 0.75rem;
+    color: #8e8e8e;
+}
+
+.comment-input-area {
+    display: flex;
+    gap: 10px;
+    padding: 15px 0;
+    border-top: 1px solid #f0f0f0;
+}
+
+.comment-input-area input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #dbdbdb;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.comment-input-area button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ==================== Friend RunLog Modal ==================== */
+.friend-profile-section {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.friend-profile-top {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.friend-profile-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #dbdbdb;
+    flex-shrink: 0;
+}
+
+.friend-profile-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.friend-profile-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.friend-profile-location,
+.friend-profile-crew {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.friend-profile-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-add-friend {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.friend-records-title {
+    margin-bottom: 15px;
+}
+
+.friend-records-title h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.friend-posts-grid {
+    padding: 0;
+}
+
+/* Empty scrap message */
+.empty-scrap {
+    text-align: center;
+    color: #8e8e8e;
+    padding: 40px 20px;
+}
+
+/* ==================== MOBILE MODAL OVERRIDE ==================== */
+@media (max-width: 768px) {
+    .modal {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 480px;
+    }
+    
+    .modal-content {
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .modal-compact {
+        margin: 40px 10px;
+        max-width: 460px;
+    }
+}
+
+/* Force 480px for all screens */
+.modal {
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 480px !important;
+}
+
+.post-detail-modal,
+.friend-runlog-modal {
+    max-width: 480px !important;
+    margin: 0 auto !important;
+    border-radius: 0 !important;
+}
+
+/* ==================== Bottom Slide Popup ==================== */
+.bottom-slide-popup {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: transform 0.3s ease-out;
+    transform: translateX(-50%) translateY(100%);
+    padding-top: 10px;
+}
+
+.bottom-slide-popup.active {
+    transform: translateX(-50%) translateY(0);
+}
+
+.bottom-popup-handle {
+    width: 40px;
+    height: 4px;
+    background: #dbdbdb;
+    border-radius: 2px;
+    margin: 0 auto 15px;
+}
+
+.bottom-popup-content {
+    padding: 0 20px 40px;
+}
+
+.bottom-popup-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bottom-popup-option:hover {
+    border-color: #a5b4fc;
+    background: #f8f9ff;
+}
+
+.bottom-popup-icon {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a5b4fc;
+}
+
+.bottom-popup-text {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ==================== Notification Icon ==================== */
+.notification-icon {
+    position: relative;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background: #ff4444;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* ==================== Search Recommendations ==================== */
+.recommended-runners {
+    padding: 20px;
+}
+
+.recommended-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #262626;
+}
+
+.runner-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.runner-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.runner-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.runner-info {
+    flex: 1;
+}
+
+.runner-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.runner-stats {
+    font-size: 0.8rem;
+    color: #8e8e8e;
+}
+
+.runner-badge {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ==================== Community Search ==================== */
+.community-search-bar {
+    padding: 15px 20px;
+    border-bottom: 1px solid #dbdbdb;
+    background: white;
+    position: sticky;
+    top: 61px;
+    z-index: 50;
+}
+
+.community-search-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background: #f8f9fa;
+}
+
+.community-search-input:focus {
+    outline: none;
+    border-color: #a5b4fc;
+    background: white;
+}
+
+.category-filter-popup {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    padding: 20px;
+    transition: transform 0.3s ease-out;
+    transform: translateX(-50%) translateY(100%);
+}
+
+.category-filter-popup.active {
+    transform: translateX(-50%) translateY(0);
+}
+
+.category-filter-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.category-filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-filter-btn {
+    padding: 10px 16px;
+    background: #f0f0f0;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.category-filter-btn.active {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border-color: #a5b4fc;
+}
+
+/* ==================== Friend Status Buttons ==================== */
+.friend-status-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.friend-status-btn.friends {
+    background: #e0e0e0;
+    color: #666;
+    cursor: default;
+}
+
+.friend-status-btn.add-friend {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+}
+
+.friend-status-btn.pending {
+    background: #fff3cd;
+    color: #856404;
+    cursor: default;
+}
+
+/* ==================== Notification Items ==================== */
+.notification-item {
+    display: flex;
+    gap: 12px;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.notif-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.notif-content {
+    flex: 1;
+}
+
+.notif-content p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.notif-time {
+    font-size: 0.75rem;
+    color: #8e8e8e;
+}
+
+.notif-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.notif-action-btn {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.notif-action-btn.accept {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+}
+
+.notif-action-btn.reject {
+    background: #f0f0f0;
+    color: #666;
+}
+
+/* ==================== Custom Toast ==================== */
+.custom-toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(38, 38, 38, 0.95);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.custom-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ==================== Popup Overlay ==================== */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.popup-overlay.active {
+    display: block;
+}
+
+/* ==================== Bottom Popup Cancel Button ==================== */
+.bottom-popup-cancel {
+    width: 100%;
+    padding: 16px;
+    margin-top: 15px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #262626;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bottom-popup-cancel:hover {
+    background: #e0e0e0;
+}
+
+/* ==================== Community Category Chips ==================== */
+.community-category-chips {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.community-category-chips::-webkit-scrollbar {
+    height: 3px;
+}
+
+.community-category-chips::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+    border-radius: 3px;
+}
+
+.category-chip {
+    padding: 8px 14px;
+    background: #f0f0f0;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.category-chip.active {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border-color: #a5b4fc;
+}
+
+/* ==================== Friend Button Full Width ==================== */
+.friend-status-btn {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+/* ==================== Crew System ==================== */
+
+/* Crew Card in Profile */
+.crew-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 15px;
+}
+
+.crew-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.crew-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.crew-info {
+    flex: 1;
+}
+
+.crew-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.crew-role {
+    font-size: 0.85rem;
+    color: #8e8e8e;
+}
+
+.crew-role.leader::before {
+    content: '👑 ';
+}
+
+.crew-details {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.crew-description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.crew-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.crew-tag {
+    background: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.crew-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.crew-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.crew-btn-primary {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+}
+
+.crew-btn-secondary {
+    background: white;
+    border: 1px solid #dbdbdb;
+    color: #666;
+}
+
+/* Crew Search Modal */
+.crew-search-container {
+    padding: 20px;
+}
+
+.crew-search-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.crew-search-input:focus {
+    outline: none;
+    border-color: #a5b4fc;
+}
+
+.crew-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.crew-list-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.crew-list-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: #a5b4fc;
+}
+
+.crew-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.crew-list-name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.crew-verified {
+    color: #4CAF50;
+    font-size: 0.8rem;
+}
+
+.crew-list-meta {
+    font-size: 0.85rem;
+    color: #8e8e8e;
+    margin-bottom: 8px;
+}
+
+.crew-list-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.crew-list-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-join-crew {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Crew Create Modal */
+.crew-create-form {
+    padding: 20px;
+}
+
+.crew-create-form .form-group {
+    margin-bottom: 20px;
+}
+
+.crew-create-form label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #262626;
+}
+
+.crew-create-form input,
+.crew-create-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.crew-create-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.crew-create-form input:focus,
+.crew-create-form textarea:focus {
+    outline: none;
+    border-color: #a5b4fc;
+}
+
+.btn-create-crew {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* No Crew State */
+.no-crew-state {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.no-crew-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.no-crew-text {
+    font-size: 0.95rem;
+    color: #8e8e8e;
+    margin-bottom: 20px;
+}
+
+.no-crew-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* ==================== Profile Photo Edit ==================== */
+.profile-photo-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-photo-edit img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.btn-change-photo {
+    padding: 8px 20px;
+    background: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-change-photo:hover {
+    background: #f8f9fa;
+    border-color: #a5b4fc;
+}
+
+/* ==================== Crew Management ==================== */
+.crew-manage-container {
+    padding: 10px;
+}
+
+.crew-manage-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.crew-manage-header h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.crew-manage-section {
+    margin-bottom: 25px;
+}
+
+.crew-manage-section h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #262626;
+}
+
+.crew-info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+}
+
+.crew-info-item span:first-child {
+    color: #8e8e8e;
+}
+
+.crew-info-item span:last-child {
+    font-weight: 600;
+}
+
+.crew-manage-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+/* ==================== Post Actions Alignment Fix ==================== */
+.post-detail-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 15px 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 15px 0;
+}
+
+.detail-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.detail-action-btn svg {
+    vertical-align: middle;
+}
+
+.detail-action-btn:hover {
+    background: #f8f9fa;
+}
+
+.detail-action-btn.liked {
+    color: #ff4444;
+    border-color: #ff4444;
+}
+
+.detail-action-btn.pinned {
+    color: #fbbf24;
+    border-color: #fbbf24;
+}
+
+/* ==================== Crew Members ==================== */
+.crew-members-container {
+    padding: 10px;
+}
+
+.crew-members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.crew-member-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+}
+
+.crew-member-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.crew-member-info {
+    flex: 1;
+}
+
+.crew-member-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.crew-member-badge {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.crew-member-meta {
+    font-size: 0.85rem;
+    color: #8e8e8e;
+}
+
+.crew-member-action {
+    width: 36px;
+    height: 36px;
+    background: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.crew-member-action:hover {
+    background: #f8f9fa;
+}
+
+/* Crew Edit Form */
+.crew-edit-form {
+    padding: 10px;
+}
+
+.crew-edit-form .form-group {
+    margin-bottom: 20px;
+}
+
+.crew-edit-form label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #262626;
+}
+
+.crew-edit-form input,
+.crew-edit-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.crew-edit-form textarea {
+    resize: vertical;
+}
+
+.crew-edit-form input:focus,
+.crew-edit-form textarea:focus {
+    outline: none;
+    border-color: #a5b4fc;
+}
+
+
+/* Empty State Message */
+.empty-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.community-feed-inner .empty-message {
+    padding: 100px 20px;
+}
+
+#recommendedRunners .empty-message {
+    padding: 40px 20px;
+}
+
+#bestLikesList .empty-message,
+#bestCommentsList .empty-message {
+    padding: 40px 20px;
+    font-size: 0.9rem;
+}

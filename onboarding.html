@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>첫 기록 등록 - My Running PB</title>
+    <link rel="stylesheet" href="auth-style.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="onboarding-card">
+            <div class="welcome-section">
+                <div class="celebration-icon">🎉</div>
+                <h1 class="welcome-title">환영합니다!</h1>
+                <p class="welcome-text">
+                    <span id="welcomeNickname">러너</span>님의 첫 기록을<br>
+                    등록해보세요
+                </p>
+            </div>
+
+            <div class="onboarding-options">
+                <div class="option-card" onclick="selectRecordType('competition')">
+                    <div class="option-icon">🏅</div>
+                    <h3>대회 기록</h3>
+                    <p>참가한 마라톤 대회의<br>기록을 등록하세요</p>
+                </div>
+
+                <div class="option-card" onclick="selectRecordType('special')">
+                    <div class="option-icon">✨</div>
+                    <h3>특별한 러닝</h3>
+                    <p>특별한 장소나 순간의<br>러닝을 기록하세요</p>
+                </div>
+            </div>
+
+            <div class="onboarding-description">
+                <p>💡 <strong>대회 기록</strong>이 없다면?</p>
+                <p>첫 러닝, 특별한 사람과 함께한 러닝,<br>
+                   새로운 장소에서의 러닝을 기록해보세요!</p>
+            </div>
+
+            <button class="btn-skip" onclick="skipOnboarding()">
+                나중에 등록하기
+            </button>
+        </div>
+
+        <!-- 대회 기록 입력 모달 -->
+        <div id="competitionModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>대회 기록 등록</h2>
+                
+                <form id="competitionForm" class="record-form">
+                    <div class="form-group">
+                        <label for="country">국가 <span class="required">*</span></label>
+                        <select id="country" required>
+                            <option value="">선택하세요</option>
+                            <option value="KR">🇰🇷 대한민국</option>
+                            <option value="US">🇺🇸 미국</option>
+                            <option value="JP">🇯🇵 일본</option>
+                            <option value="CN">🇨🇳 중국</option>
+                            <option value="other">기타</option>
+                        </select>
+                    </div>
+
+                    <!-- 연도 필드는 향후 기능으로 일단 숨김 -->
+                    <!--
+                    <div class="form-group">
+                        <label for="year">연도 <span class="required">*</span></label>
+                        <select id="year" required>
+                            <option value="">선택하세요</option>
+                        </select>
+                    </div>
+                    -->
+
+                    <div class="form-group">
+                        <label for="competition-name">대회명 <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="competition-name" 
+                            placeholder="예: 춘천 마라톤"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="distance">거리 <span class="required">*</span></label>
+                        <select id="distance" required>
+                            <option value="">선택하세요</option>
+                            <option value="5K">5K</option>
+                            <option value="10K">10K</option>
+                            <option value="Half">Half</option>
+                            <option value="Full">Full</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>기록 (시:분:초) <span class="required">*</span></label>
+                        <div class="time-input-modern">
+                            <input type="text" id="comp-hours" maxlength="2" placeholder="00" inputmode="numeric">
+                            <span class="time-separator">:</span>
+                            <input type="text" id="comp-minutes" maxlength="2" placeholder="00" required inputmode="numeric">
+                            <span class="time-separator">:</span>
+                            <input type="text" id="comp-seconds" maxlength="2" placeholder="00" required inputmode="numeric">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>날짜 <span class="required">*</span></label>
+                        <div class="date-select-group">
+                            <select id="comp-year" class="date-select" required>
+                                <option value="">년도</option>
+                            </select>
+                            <select id="comp-month" class="date-select" required>
+                                <option value="">월</option>
+                            </select>
+                            <select id="comp-day" class="date-select" required>
+                                <option value="">일</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comp-photos">사진 (최대 3장)</label>
+                        <div class="multi-photo-upload">
+                            <div class="photo-grid" id="compPhotoGrid">
+                                <div class="photo-item add-photo" onclick="document.getElementById('comp-photos').click()">
+                                    <span class="add-icon">+</span>
+                                </div>
+                            </div>
+                            <input 
+                                type="file" 
+                                id="comp-photos" 
+                                accept="image/*"
+                                multiple
+                                style="display: none;"
+                            >
+                        </div>
+                        <small class="help-text">기록증, 현장 사진 등을 업로드하세요</small>
+                    </div>
+
+                    <button type="submit" class="btn-primary">등록하기</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 특별한 러닝 기록 모달 -->
+        <div id="specialModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>특별한 러닝 기록</h2>
+                
+                <form id="specialForm" class="record-form">
+                    <div class="form-group">
+                        <label for="special-location">장소 <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="special-location" 
+                            placeholder="예: 한강 반포대교, 제주 올레길"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="special-with">함께한 사람</label>
+                        <input 
+                            type="text" 
+                            id="special-with" 
+                            placeholder="예: 친구, 가족"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="special-distance-val">거리 (km)</label>
+                        <input 
+                            type="number" 
+                            id="special-distance-val" 
+                            step="0.1"
+                            placeholder="5.0"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>기록 (시:분:초)</label>
+                        <div class="time-input-modern">
+                            <input type="text" id="special-hours" maxlength="2" placeholder="00" inputmode="numeric">
+                            <span class="time-separator">:</span>
+                            <input type="text" id="special-minutes" maxlength="2" placeholder="00" inputmode="numeric">
+                            <span class="time-separator">:</span>
+                            <input type="text" id="special-seconds" maxlength="2" placeholder="00" inputmode="numeric">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>날짜 <span class="required">*</span></label>
+                        <div class="date-select-group">
+                            <select id="special-year" class="date-select" required>
+                                <option value="">년도</option>
+                            </select>
+                            <select id="special-month" class="date-select" required>
+                                <option value="">월</option>
+                            </select>
+                            <select id="special-day" class="date-select" required>
+                                <option value="">일</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="special-memo">메모</label>
+                        <textarea 
+                            id="special-memo" 
+                            rows="3"
+                            placeholder="이 러닝에 대한 특별한 기억을 남겨보세요"
+                            style="width: 100%; box-sizing: border-box;"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="special-photos">사진 (최대 3장)</label>
+                        <div class="multi-photo-upload">
+                            <div class="photo-grid" id="specialPhotoGrid">
+                                <div class="photo-item add-photo" onclick="document.getElementById('special-photos').click()">
+                                    <span class="add-icon">+</span>
+                                </div>
+                            </div>
+                            <input 
+                                type="file" 
+                                id="special-photos" 
+                                accept="image/*"
+                                multiple
+                                style="display: none;"
+                            >
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">등록하기</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 성공 모달 -->
+        <div id="successModal" class="modal">
+            <div class="modal-content success-content">
+                <div class="success-animation">
+                    <div class="scoreboard">
+                        <div class="record-display">
+                            <div class="record-label">첫 기록 등록 완료!</div>
+                            <div class="record-time" id="successTime">--:--</div>
+                            <div class="record-info" id="successInfo">--</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="goToMain()">
+                    시작하기 🎉
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="onboarding.js"></script>
+</body>
+</html>

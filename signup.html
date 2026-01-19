@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 - My Running PB</title>
+    <link rel="stylesheet" href="auth-style.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-card">
+            <div class="logo">
+                <div class="logo-icon">🏃</div>
+                <h1>회원가입</h1>
+                <p class="tagline">러닝 여정을 시작하세요</p>
+            </div>
+
+            <!-- 진행 표시 -->
+            <div class="progress-indicator">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">기본 정보</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">추가 정보</div>
+                </div>
+            </div>
+
+            <!-- Step 1: 필수 정보 -->
+            <form id="signupStep1" class="auth-form step-form active">
+                <h2 class="step-title">기본 정보 입력</h2>
+                
+                <div class="form-group">
+                    <label for="signup-email">이메일 <span class="required">*</span></label>
+                    <input 
+                        type="email" 
+                        id="signup-email" 
+                        placeholder="example@email.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-password">비밀번호 <span class="required">*</span></label>
+                    <div class="password-wrapper">
+                        <input 
+                            type="password" 
+                            id="signup-password" 
+                            placeholder="8자 이상"
+                            required
+                        >
+                        <button type="button" class="password-toggle" onclick="togglePassword('signup-password')">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                    <small class="help-text">영문, 숫자 포함 8자 이상</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-password-confirm">비밀번호 확인 <span class="required">*</span></label>
+                    <div class="password-wrapper">
+                        <input 
+                            type="password" 
+                            id="signup-password-confirm" 
+                            placeholder="비밀번호를 다시 입력하세요"
+                            required
+                        >
+                        <button type="button" class="password-toggle" onclick="togglePassword('signup-password-confirm')">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-nickname">닉네임 <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="signup-nickname" 
+                        placeholder="2-10자"
+                        required
+                    >
+                    <small class="help-text">다른 사용자에게 표시되는 이름</small>
+                </div>
+
+                <button type="button" class="btn-primary" onclick="goToStep2()">
+                    다음
+                </button>
+            </form>
+
+            <!-- Step 2: 선택 정보 -->
+            <form id="signupStep2" class="auth-form step-form">
+                <h2 class="step-title">추가 정보 입력 (선택)</h2>
+                <p class="step-description">더 나은 경험을 위해 정보를 입력해주세요</p>
+
+                <div class="form-group">
+                    <label for="profile-photo">프로필 사진</label>
+                    <div class="photo-upload-modern">
+                        <div class="photo-preview-modern circular" id="photoPreviewModern" onclick="document.getElementById('profile-photo').click()">
+                            <div class="photo-placeholder">
+                                <span class="photo-icon-large">📷</span>
+                                <span class="photo-text-modern">사진을 선택하세요</span>
+                            </div>
+                        </div>
+                        <input 
+                            type="file" 
+                            id="profile-photo" 
+                            accept="image/*"
+                            style="display: none;"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="region">주요 활동지역</label>
+                    <input 
+                        type="text" 
+                        id="region" 
+                        placeholder="예: 서울 강남, 한강 반포"
+                    >
+                    <small class="help-text">주로 러닝하는 지역을 입력하세요</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">성별</label>
+                    <select id="gender">
+                        <option value="">선택 안함</option>
+                        <option value="male">남성</option>
+                        <option value="female">여성</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="birth-year">생년월일</label>
+                    <div class="date-select-group">
+                        <select id="birth-year" class="date-select">
+                            <option value="">년도</option>
+                        </select>
+                        <select id="birth-month" class="date-select">
+                            <option value="">월</option>
+                        </select>
+                        <select id="birth-day" class="date-select">
+                            <option value="">일</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferred-distance">선호 거리</label>
+                    <select id="preferred-distance">
+                        <option value="">선택 안함</option>
+                        <option value="5k">5K</option>
+                        <option value="10k">10K</option>
+                        <option value="half">하프 마라톤</option>
+                        <option value="full">풀코스</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="running-purpose">러닝 목적</label>
+                    <select id="running-purpose">
+                        <option value="">선택 안함</option>
+                        <option value="health">건강 관리</option>
+                        <option value="weight">체중 감량</option>
+                        <option value="competition">대회 참가</option>
+                        <option value="hobby">취미/즐거움</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="goToStep1()">
+                        이전
+                    </button>
+                    <button type="button" class="btn-tertiary" onclick="skipToOnboarding()">
+                        나중에 입력
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        완료
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-links">
+                <span>이미 계정이 있으신가요?</span>
+                <a href="login.html">로그인</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
