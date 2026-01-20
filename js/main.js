@@ -171,3 +171,100 @@ const PageManager = {
                 this.showAddMenu();
             }, 'add-button');
         }
+    },
+
+    /**
+     * + 버튼 메뉴 표시
+     */
+    showAddMenu: function() {
+        const menu = document.getElementById('addMenu');
+        if (!menu) return;
+        
+        menu.innerHTML = `
+            <div class="add-menu-backdrop" id="addMenuBackdrop"></div>
+            <div class="add-menu-content">
+                <button class="add-menu-item" id="addRunlog">
+                    <span class="add-menu-icon">🏃</span>
+                    <span class="add-menu-text">런로그 기록</span>
+                </button>
+                <button class="add-menu-item" id="addCommunity">
+                    <span class="add-menu-icon">✍️</span>
+                    <span class="add-menu-text">커뮤니티 글</span>
+                </button>
+                <button class="add-menu-cancel" id="addMenuCancel">취소</button>
+            </div>
+        `;
+        
+        menu.style.display = 'block';
+        
+        // 이벤트 리스너
+        EventManager.add(document.getElementById('addRunlog'), 'click', () => {
+            this.closeAddMenu();
+            this.openRunlogModal('competition');
+        }, 'add-runlog');
+        
+        EventManager.add(document.getElementById('addCommunity'), 'click', () => {
+            this.closeAddMenu();
+            showToast('커뮤니티 글쓰기는 준비중입니다');
+        }, 'add-community');
+        
+        EventManager.add(document.getElementById('addMenuCancel'), 'click', () => {
+            this.closeAddMenu();
+        }, 'add-cancel');
+        
+        EventManager.add(document.getElementById('addMenuBackdrop'), 'click', () => {
+            this.closeAddMenu();
+        }, 'add-backdrop');
+    },
+
+    /**
+     * + 버튼 메뉴 닫기
+     */
+    closeAddMenu: function() {
+        const menu = document.getElementById('addMenu');
+        if (menu) {
+            menu.style.display = 'none';
+            menu.innerHTML = '';
+        }
+    },
+
+    /**
+     * 런로그 모달 열기
+     */
+    openRunlogModal: function(type) {
+        console.log('📝 런로그 모달 열기:', type);
+        
+        if (typeof RunlogModule !== 'undefined') {
+            RunlogModule.openRunlogModal(type);
+        }
+    },
+
+    /**
+     * 로그아웃 버튼 설정
+     */
+    setupLogout: function() {
+        const logoutBtn = document.getElementById('logoutBtn');
+        
+        if (logoutBtn) {
+            EventManager.add(logoutBtn, 'click', async () => {
+                try {
+                    await firebase.auth().signOut();
+                    showToast('로그아웃되었습니다');
+                    window.location.href = 'login.html';
+                } catch (error) {
+                    console.error('로그아웃 오류:', error);
+                    showToast('로그아웃 중 오류가 발생했습니다');
+                }
+            }, 'logout');
+        }
+    }
+};
+
+// DOMContentLoaded 이벤트에서 초기화
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🌐 DOM 로드 완료');
+    PageManager.init();
+});
+
+// 전역으로 노출
+window.PageManager = PageManager;
